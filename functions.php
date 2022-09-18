@@ -1,31 +1,5 @@
 <?php
 
-/* Adds classes to the body tag. */
-function textdomain_body_classes( $classes ) {
-	$classes[] = 'slides';
-	return $classes;
-	}
-add_filter( 'body_class', 'textdomain_body_classes' );
-
-/*Add content to head */
- function add_to_head() {
-      include_once 'metadata.php';
-    }
-add_action( 'wp_head', 'add_to_head' );
-
-/* Add content to just below the body tag */
-function custom_content_after_body_open_tag() {
-  include_once 'post_body.php';
-}
-add_action('wp_body_open', 'custom_content_after_body_open_tag');
-
-/* Add content to footer */
-function add_to_footer() {
-      include_once 'footer_data.php';
-    }
-add_action( 'wp_footer', 'add_to_footer' );
-
-
 if (!function_exists("block_theme_setup")):
   function block_theme_setup()
   {
@@ -38,6 +12,19 @@ if (!function_exists("block_theme_setup")):
   }
   add_action("after_setup_theme", "block_theme_setup");
 endif;
+
+/* Adds classes to the body tag. */
+function textdomain_body_classes( $classes ) {
+	$classes[] = 'slides';
+	return $classes;
+	}
+add_filter( 'body_class', 'textdomain_body_classes' );
+
+/*Add content to head */
+ function add_to_head() {
+      include_once 'metadata.php';
+    }
+add_action( 'wp_head', 'add_to_head' );
 
 function preview_stuff()
 // Adds preview stuff.
